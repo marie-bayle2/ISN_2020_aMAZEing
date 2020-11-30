@@ -3,52 +3,46 @@ package engine;
 import java.util.*;
 
 public class Monstre {
+	
+	public void placer(byte[][] M) {
+		int t = 17*17; //Taille du labyrinthe
+		int r = (int) (Math.random()*t);
+		int x = r/10;
+		int y = r%10;
+		while(M[x][y]!=0) {
+			r = (int) (Math.random()*t);
+			x = r/17;
+			y = r%17;
+		}
+		
+	}
 
-	public ArrayList<Integer> bouger(int[][] M, int x, int y) {
+	public void bouger(byte[][] M, int x, int y) {
 		int b;
 		int h;
 		int d;
 		int g;
-		if(M[x+1][y]!=1) {
-			b = 1;}
-		else {
-			b = 0;}
-		if(M[x-1][y]!=1) {
-			h = 1;}
-		else {
-			h = 0;}
-		if(M[x][y+1]!=1) {
-			d = 1;}
-		else {
-			d = 0;}
-		if(M[x][y-1]!=1) {
-			g = 1;}
-		else {
-			g = 0;}
+
 		ArrayList<Integer> L = new ArrayList<Integer>();
-		if(b!=0) {L.add(b);}
-		if(h!=0) {L.add(h);}
-		if(d!=0) {L.add(d);}
-		if(g!=0) {L.add(g);}
+		if(isFree(x,y-1)) { // Est ce qu'on peut aller en bas ?
+			L.add(b);}
+		if(isFree(x,y+1)) { //Est ce qu'on peut aller en haut ?
+			L.add(h);}
+		if(isFree(x+1,y)) { // Est ce qu'on peut aller a droite ?
+			L.add(d);}
+		if(isFree(x-1,y)) { //Est ce qu'on peut aller à gauche ?
+			L.add(g);}
 		
-		int l;
-		l=L.size();
-		ArrayList<Integer> position = new ArrayList<Integer>();
+		int l=L.size();
 		int r = (int) (Math.random() * l);
 		if(L.get(r)==b) {
-			position.add(x+1);
-			position.add(y);}
+			y=y+1;}
 		else if(L.get(r)==h) {
-			position.add(x-1);
-			position.add(y);}
+			y=y-1;}
 		else if(L.get(r)==d) {
-			position.add(x);
-			position.add(y+1);}
+			x=x+1;}
 		else{
-			position.add(x);
-			position.add(y-1);}
-		return position;
-			
+			x=x-1;}
 		}
 }
 	
