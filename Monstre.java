@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Monstre {
 	
-	public void placer(byte[][] M) {
+	public void placer() {
 		int t = 17*17; //Taille du labyrinthe
 		int r = (int) (Math.random()*t);
 		int x = r/10;
 		int y = r%10;
-		while(M[x][y]!=0) {
+		while(isFree(x,y)==false) {
 			r = (int) (Math.random()*t);
 			x = r/17;
 			y = r%17;
@@ -17,7 +17,7 @@ public class Monstre {
 		
 	}
 
-	public void bouger(byte[][] M, int x, int y) {
+	public void bouger(int x, int y) {
 		int b;
 		int h;
 		int d;
