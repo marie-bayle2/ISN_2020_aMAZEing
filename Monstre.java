@@ -9,7 +9,7 @@ public class Monstre {
 		int r = (int) (Math.random()*t);
 		int x = r/10;
 		int y = r%10;
-		while(isFree(x,y)==false) {
+		while(PacmanGame.PacmanGame.isFree(x,y)==false) {
 			r = (int) (Math.random()*t);
 			x = r/17;
 			y = r%17;
@@ -24,13 +24,13 @@ public class Monstre {
 		int g;
 
 		ArrayList<Integer> L = new ArrayList<Integer>();
-		if(isFree(x,y-1)) { // Est ce qu'on peut aller en bas ?
+		if(PacmanGame.isFree(x,y-1)) { // Est ce qu'on peut aller en bas ?
 			L.add(b);}
-		if(isFree(x,y+1)) { //Est ce qu'on peut aller en haut ?
+		if(PacmanGame.isFree(x,y+1)) { //Est ce qu'on peut aller en haut ?
 			L.add(h);}
-		if(isFree(x+1,y)) { // Est ce qu'on peut aller a droite ?
+		if(PacmanGame.isFree(x+1,y)) { // Est ce qu'on peut aller a droite ?
 			L.add(d);}
-		if(isFree(x-1,y)) { //Est ce qu'on peut aller à gauche ?
+		if(PacmanGame.isFree(x-1,y)) { //Est ce qu'on peut aller à gauche ?
 			L.add(g);}
 		
 		int l=L.size();
