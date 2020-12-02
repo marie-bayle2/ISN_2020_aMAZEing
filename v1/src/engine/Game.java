@@ -26,6 +26,6 @@ public interface Game {
 	 *			 coordonnées
 	 * @return true si et seulement la position est accessible
 	 */
-	//public static boolean isFree(int x, int y);
+	public boolean isFree(int x, int y);
 
 }

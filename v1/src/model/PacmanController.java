@@ -4,6 +4,7 @@ import engine.Cmd;
 import engine.GameController;
 
 
+
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -32,5 +33,10 @@ public class PacmanController implements GameController {
 	 */
 	public Cmd getCommand() {
 		return this.commandeEnCours;
+		
+	}
+
+	public void setCommand(Cmd commande) {
+		this.commandeEnCours = commande;
 	}
 }
