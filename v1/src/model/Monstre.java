@@ -48,6 +48,12 @@ public class Monstre {
 	public void sety(int newy){
 		this.y = newy;
 	}
+
+	//toString
+	//toString
+	public String toString() {
+		return "Le monstre est aux coordonnees (" + this.x + ", " + this.y + ")."; 
+	}
 }
 	
 	

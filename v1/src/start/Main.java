@@ -27,7 +27,7 @@ public class Main {
 		//boucle
 		while (!game.isFinished()){
 			System.out.println(game.hero.toString()); //on affiche la position du héro
-			//on affiche la position du monstre
+			System.out.println(game.monstre.toString()); //on affiche la position du monstre
 
 			//on affiche le jeu
 			System.out.println(game.toString());
