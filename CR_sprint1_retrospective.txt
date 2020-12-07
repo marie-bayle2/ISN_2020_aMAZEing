@@ -1,0 +1,13 @@
+Compte-rendu du sprint retrospective
+
+Pour commencer, nous avonc eu un peu de mal à élaborer les diagrammes de classe et de séquence en accord avec les 
+décisions que nous avions prises pour ce sprint.
+Une fois les diagrammes effectués, nous nous sommes facilement répartis les rôles et nous n'avons eu aucun problème
+pour les classes Hero et Monstre, ainsi que pour générer le labyrinthe à partir d'un fichier.
+La principale difficulté de notre code à été au niveau de la fonction isFree(int x, int y) qui retourne si la case (x,y) est libre ou non.
+Nous avons su finalement résoudre le problème et avons un code fonctionnel.
+
+Tout au long de la création de ce sprint, avec notre groupe nous avons fait de nombreuses réunions via l'application discord afin de vérifier que tout le monde 
+avancait bien dans la bonne direction. Nous maintiendront tout au long de notre projet ces reunions car elles sont pour nous très importantes.
+
+-Decisions pour le sprint suivant
