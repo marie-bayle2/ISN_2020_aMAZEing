@@ -1,0 +1,12 @@
+### Héro ###
+- Le héros est placé sur le plateau de jeu et peu s'y déplacer à l'intérieur.
+- Le héros a des points de vie, il perd un point lorsqu'il est en contact avec un monstre.
+
+### Labyrinthes ###
+- Le labyrinthes est généré à partir d'un fichier et comporte un trésor qui lorsqu'il est trouvé met fin au 
+jeu.
+- Faire une interface graphique.
+
+### Monstres ###
+- Les montres sont placés de manières aléatoires dans le labyrinthes.
+- Les monstres se déplacent de manière intelligente en essayant d’attraper le héros.
