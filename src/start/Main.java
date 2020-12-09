@@ -116,7 +116,7 @@ public class Main {
 						 
 				}
 			}
-			else { //Si le héro est en bas du monstre
+			else if(game.hero.getx()>game.monstre.getx()){ //Si le héro est en bas du monstre
 				if(game.isFree(game.monstre.getx()+1, game.monstre.gety())) cmdPossible.add(Cmd.DOWN); //test aller en bas si le héro est vers le bas
 				else if(game.hero.gety()<game.monstre.gety()) { //Si le héro est sur la gauche
 					if(game.isFree(game.monstre.getx(), game.monstre.gety()-1)) cmdPossible.add(Cmd.LEFT);//test aller à gauche si le héro est vers la gauche
@@ -131,6 +131,22 @@ public class Main {
 					else {
 						if (game.isFree(game.monstre.getx()-1, game.monstre.gety())) cmdPossible.add(Cmd.UP); //teste aller en haut
 						if (game.isFree(game.monstre.getx(), game.monstre.gety()-1)) cmdPossible.add(Cmd.LEFT); //teste aller Ã  gauche
+					}
+				}
+			}
+			else { // Si ils sont sur la même ligne
+				if (game.hero.gety()<game.monstre.gety()) { //Si le héro est sur la gauche
+					if(game.isFree(game.monstre.getx(), game.monstre.gety()-1)) cmdPossible.add(Cmd.LEFT);//test aller à gauche si le héro est vers la gauche
+					else {
+						if (game.isFree(game.monstre.getx()-1, game.monstre.gety())) cmdPossible.add(Cmd.UP); //teste aller en haut
+						if (game.isFree(game.monstre.getx()+1, game.monstre.gety())) cmdPossible.add(Cmd.DOWN); //test aller en bas 
+					}
+				}
+				else if (game.hero.gety()>game.monstre.gety()) { //Si le héro est sur la droite
+					if(game.isFree(game.monstre.getx(), game.monstre.gety()+1)) cmdPossible.add(Cmd.RIGHT);//test aller à droite si le héro est vers la droite
+					else {
+						if (game.isFree(game.monstre.getx()-1, game.monstre.gety())) cmdPossible.add(Cmd.UP); //teste aller en haut
+						if (game.isFree(game.monstre.getx()+1, game.monstre.gety())) cmdPossible.add(Cmd.DOWN); //test aller en bas 
 					}
 				}
 			}
