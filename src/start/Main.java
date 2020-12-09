@@ -87,12 +87,54 @@ public class Main {
 			//on fait bouger le monstre
 			//on construit une liste de l'ensemble des commandes posibles
 			ArrayList<Cmd> cmdPossible = new ArrayList<Cmd>();
+			
+			
+			/*
 			cmdPossible.add(Cmd.IDLE); //ne rien faire est forcÃ©ment une option possible
 			if (game.isFree(game.monstre.getx(), game.monstre.gety()-1)) cmdPossible.add(Cmd.LEFT); //teste aller Ã  gauche
 			if (game.isFree(game.monstre.getx(), game.monstre.gety()+1)) cmdPossible.add(Cmd.RIGHT); //teste aller Ã  droite
 			if (game.isFree(game.monstre.getx()-1, game.monstre.gety())) cmdPossible.add(Cmd.UP); //teste aller en haut
 			if (game.isFree(game.monstre.getx()+1, game.monstre.gety())) cmdPossible.add(Cmd.DOWN); //teste aller en bas
 			//on en choisit une au hasard
+			 */
+			
+			if(game.hero.getx()<game.monstre.getx()) { // Le héro est en haut du monstre
+				if(game.isFree(game.monstre.getx()-1, game.monstre.gety())) cmdPossible.add(Cmd.UP); //test aller en haut si le héro est vers le haut
+				else if(game.hero.gety()<game.monstre.gety()) { //Si le héro est sur la gauche
+					if(game.isFree(game.monstre.getx(), game.monstre.gety()-1)) cmdPossible.add(Cmd.LEFT);//test aller à gauche si le héro est vers la gauche
+					else {
+						if (game.isFree(game.monstre.getx(), game.monstre.gety()+1)) cmdPossible.add(Cmd.RIGHT); //teste aller Ã  droite
+						if (game.isFree(game.monstre.getx()+1, game.monstre.gety())) cmdPossible.add(Cmd.DOWN); //teste aller en bas
+					}
+				}
+				else if(game.hero.gety()>game.monstre.gety()) { //Si le héro est sur la droite
+					if(game.isFree(game.monstre.getx(), game.monstre.gety()+1)) cmdPossible.add(Cmd.RIGHT);//test aller à gauche si le héro est vers la gauche
+					else {
+						if (game.isFree(game.monstre.getx()+1, game.monstre.gety())) cmdPossible.add(Cmd.DOWN); //teste aller en bas
+						if (game.isFree(game.monstre.getx(), game.monstre.gety()-1)) cmdPossible.add(Cmd.LEFT); //teste aller Ã  gauche
+					}
+						 
+				}
+			}
+			else { //Si le héro est en bas du monstre
+				if(game.isFree(game.monstre.getx()+1, game.monstre.gety())) cmdPossible.add(Cmd.DOWN); //test aller en bas si le héro est vers le bas
+				else if(game.hero.gety()<game.monstre.gety()) { //Si le héro est sur la gauche
+					if(game.isFree(game.monstre.getx(), game.monstre.gety()-1)) cmdPossible.add(Cmd.LEFT);//test aller à gauche si le héro est vers la gauche
+					else {
+						if (game.isFree(game.monstre.getx(), game.monstre.gety()+1)) cmdPossible.add(Cmd.RIGHT); //teste aller Ã  droite
+						if (game.isFree(game.monstre.getx()-1, game.monstre.gety())) cmdPossible.add(Cmd.UP); //teste aller en haut
+					}
+				}
+				
+				else if(game.hero.gety()>game.monstre.gety()) { //Si le héro est sur la droite
+					if(game.isFree(game.monstre.getx(), game.monstre.gety()+1)) cmdPossible.add(Cmd.RIGHT);//test aller à droite si le héro est vers la droite
+					else {
+						if (game.isFree(game.monstre.getx()-1, game.monstre.gety())) cmdPossible.add(Cmd.UP); //teste aller en haut
+						if (game.isFree(game.monstre.getx(), game.monstre.gety()-1)) cmdPossible.add(Cmd.LEFT); //teste aller Ã  gauche
+					}
+				}
+			}
+			
 			controllerMonstre.setCommand(cmdPossible.get((int)(Math.random()*cmdPossible.size())));
 
 			//on fait bouger le monstre
