@@ -17,22 +17,24 @@ public class Hero {
 		this.y = y;
 	}
 	
+	
+	
 	//Fait faire une action au héro (pour l'instant le fait juste bouger)
-	public void action(Cmd commande) {
+	public void action(Labyrinthe labyrinthe, Cmd commande) {
 		if (commande == Cmd.LEFT) {
-			this.y = this.y - 1;
+			if (labyrinthe.isFree(this.x-1, this.y)) this.x = this.x - 1;	
 			
 		} 
 		if (commande == Cmd.RIGHT) {
-			this.y = this.y + 1;
+			this.x = this.x + 1;
 			
 		}
 		if (commande == Cmd.UP) {
-			this.x = this.x - 1;
+			this.y = this.y - 1;
 			
 		}
 		if (commande == Cmd.DOWN) {
-			this.x = this.x + 1;
+			this.y = this.y + 1;
 			
 		}
 		if (commande == Cmd.IDLE) {}	

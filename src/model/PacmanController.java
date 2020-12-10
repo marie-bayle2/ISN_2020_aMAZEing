@@ -1,9 +1,12 @@
 package model;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import engine.Cmd;
-import engine.GameController;
 
 
+import java.awt.event.KeyListener;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -11,7 +14,7 @@ import engine.GameController;
  * controleur de type KeyListener
  * 
  */
-public class PacmanController implements GameController {
+public class PacmanController implements KeyListener {
 
 	/**
 	 * commande en cours
@@ -33,10 +36,50 @@ public class PacmanController implements GameController {
 	 */
 	public Cmd getCommand() {
 		return this.commandeEnCours;
-		
 	}
 
-	public void setCommand(Cmd commande) {
-		this.commandeEnCours = commande;
+	@Override
+	/**
+	 * met a jour les commandes en fonctions des touches appuyees
+	 */
+	public void keyPressed(KeyEvent e) {
+
+		switch (e.getKeyChar()) {
+		// si on appuie sur 'q',commande joueur est gauche
+		case 'l':
+		case 'L':
+			this.commandeEnCours = Cmd.LEFT;
+			break;
+		case 'r':
+		case 'R':
+			this.commandeEnCours = Cmd.RIGHT;
+			break;
+		case 'u':
+		case 'U':
+			this.commandeEnCours = Cmd.UP;
+			break;
+		case 'd':
+		case 'D':
+			this.commandeEnCours = Cmd.DOWN;
+			break;
+		}
+
 	}
+
+	@Override
+	/**
+	 * met a jour les commandes quand le joueur relache une touche
+	 */
+	public void keyReleased(KeyEvent e) {
+		this.commandeEnCours = Cmd.IDLE;
+	}
+
+	@Override
+	/**
+	 * ne fait rien
+	 */
+	public void keyTyped(KeyEvent e) {
+
+	}
+
 }
