@@ -74,7 +74,7 @@ public class Monstre {
 	}
 
 	//Fais bouger le monstre
-	public void bouger(Labyrinthe labyrinthe, Hero hero) {
+	public void bouger(Cmd commande) {
 		if (commande == Cmd.LEFT) {
 			this.y = this.y - 1;
 			
