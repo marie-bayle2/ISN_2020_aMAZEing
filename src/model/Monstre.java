@@ -12,7 +12,7 @@ public class Monstre {
 	public Monstre() {}
 	
 	
-	public void OuBouger(Labyrinthe labyrinthe, Hero hero) {
+	public Cmd OuBouger(Labyrinthe labyrinthe, Hero hero) {
 		
 		Cmd commandeDuMonstre;
 		
@@ -70,7 +70,7 @@ public class Monstre {
 			}
 		}
 		
-		commandeDuMonstre = cmdPossible.get((int)(Math.random()*cmdPossible.size()));
+		return commandeDuMonstre = cmdPossible.get((int)(Math.random()*cmdPossible.size()));
 	}
 
 	//Fais bouger le monstre
