@@ -64,9 +64,7 @@ public class PacmanGame {
 			i++;
 		}
 		in.close();
-		
 		return labyrinthe;
-		
 	}
 
 	/**
@@ -81,12 +79,11 @@ public class PacmanGame {
 		return this.hero;
 	}
 	
-	/* public Monstre evolveM(Labyrinthe labyrinthe, Hero hero) {
-		this.monstre.bouger(labyrinthe, hero);
+	public Monstre evolveM(Labyrinthe labyrinthe, Hero hero) {
+		this.monstre.bouger(this.monstre.OuBouger(labyrinthe, hero));
 		
 		return this.monstre;
 	}
-*/
 
 	/**
 	 * verifier si le jeu est fini
