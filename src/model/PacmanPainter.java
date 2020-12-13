@@ -19,12 +19,7 @@ public class PacmanPainter {
 	protected static final int WIDTH = 170;
 	protected static final int HEIGHT = 170;
 
-	/**
-	 * appelle constructeur parent
-	 * 
-	 * @param game
-	 *            le jeutest a afficher
-	 */
+
 	public PacmanPainter() {
 	}
 

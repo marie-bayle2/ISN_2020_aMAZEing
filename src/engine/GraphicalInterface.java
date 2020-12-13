@@ -25,8 +25,8 @@ public class GraphicalInterface  {
 	/**
 	 * la construction de l'interface graphique: JFrame avec panel pour le game
 	 * 
-	 * @param gamePainter l'afficheur a utiliser dans le moteur
-	 * @param gameController l'afficheur a utiliser dans le moteur
+	 * @param painter l'afficheur a utiliser dans le moteur
+	 * @param controller l'afficheur a utiliser dans le moteur
 	 * 
 	 */
 	public GraphicalInterface(PacmanPainter painter, PacmanController controller){

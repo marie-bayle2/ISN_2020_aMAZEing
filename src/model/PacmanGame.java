@@ -18,7 +18,7 @@ public class PacmanGame {
 	
 	public Hero hero;
 	public Monstre monstre;
-	private int labyrinthe[][];
+	//private int labyrinthe[][];
 	private int width;
 	private int height;
 
@@ -30,7 +30,7 @@ public class PacmanGame {
 		//creation du hero
 		hero = new Hero();
 		//creation du monstre
-		Monstre monstre = new Monstre();
+		monstre = new Monstre();
 		//lecture du fichier 
 		BufferedReader helpReader;
 		try {
@@ -49,19 +49,25 @@ public class PacmanGame {
 	 * faire evoluer le jeu suite a une commande
 	 * 
 	 * @param commande
+	 *
+	 * @param labyrinthe
 	 */
 	public Hero evolve(Labyrinthe labyrinthe, Cmd commande) {
 		this.hero.action(labyrinthe, commande);
-		//this.monstre.bouger(hero) ?
+		//this.monstre.bouger(this.monstre.ouBouger(labyrinthe, this.hero));
 		System.out.println("Execute "+commande);
 		return this.hero;
+
 	}
 
-	
-	public Monstre evolveM(Labyrinthe labyrinthe) {
-		//this.monstre.bouger(this.monstre.ouBouger(labyrinthe, this.hero));
-		return(new Monstre());
+
+	public Monstre evolveM(Labyrinthe labyrinthe, Hero hero) {
+		Cmd c = this.monstre.ouBouger(labyrinthe, hero);
+		this.monstre.bouger(c);
+		return this.monstre;
 	}
+
+
 
 	/**
 	 * verifier si le jeu est fini
