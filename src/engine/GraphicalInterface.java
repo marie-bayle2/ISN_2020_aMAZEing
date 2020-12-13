@@ -3,8 +3,10 @@ package engine;
 import javax.swing.JFrame;
 
 import model.Hero;
+import model.Monstre;
 import model.PacmanController;
 import model.PacmanPainter;
+import model.Labyrinthe;
 
 
 /**
@@ -23,8 +25,8 @@ public class GraphicalInterface  {
 	/**
 	 * la construction de l'interface graphique: JFrame avec panel pour le game
 	 * 
-	 * @param gamePainter l'afficheur a utiliser dans le moteur
-	 * @param gameController l'afficheur a utiliser dans le moteur
+	 * @param painter l'afficheur a utiliser dans le moteur
+	 * @param controller l'afficheur a utiliser dans le moteur
 	 * 
 	 */
 	public GraphicalInterface(PacmanPainter painter, PacmanController controller){
@@ -47,8 +49,8 @@ public class GraphicalInterface  {
 	/**
 	 * mise a jour du dessin
 	 */
-	public void paint(Hero hero) {
-		this.panel.drawGame(hero);	
+	public void paint(Hero hero, Monstre m, Labyrinthe lab) {
+		this.panel.drawGame(hero, m, lab);
 	}
 	
 }

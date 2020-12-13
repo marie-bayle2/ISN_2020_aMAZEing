@@ -46,9 +46,9 @@ public class GameEngineGraphical {
 	 * 
 	 * @param game
 	 *            game a lancer
-	 * @param gamePainter
+	 * @param painter
 	 *            afficheur a utiliser
-	 * @param gameController
+	 * @param controller
 	 *            controlleur a utiliser
 	 *            
 	 */
@@ -61,7 +61,7 @@ public class GameEngineGraphical {
 
 	/**
 	 * permet de lancer le game
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void run() throws InterruptedException, IOException {
 		// creation du labyrinthe
@@ -75,10 +75,10 @@ public class GameEngineGraphical {
 			// demande controle utilisateur
 			Cmd c = this.controller.getCommand();
 			// fait evoluer le game
-			hero = this.game.evolve(labyrinthe,c); 
-			//monstre = this.game.evolveM(labyrinthe,hero);
+			hero = this.game.evolve(labyrinthe,c);
+			monstre = this.game.evolveM(labyrinthe, hero);
 			// affiche le game
-			this.gui.paint(hero);
+			this.gui.paint(hero, monstre, labyrinthe);
 			// met en attente
 			Thread.sleep(100);
 		}
