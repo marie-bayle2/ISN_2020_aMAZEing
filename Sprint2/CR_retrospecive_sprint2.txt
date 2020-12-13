@@ -1,0 +1,9 @@
+Compte-rendu retrospective du sprint 2
+
+Pour le sprint 2 de ce projet, nous avons continué à faire des réunions via discord afin de parler ensemble de ce qui
+avait déjà été fait et de ce qu'il restait à faire.
+Cette fois-ci, il y a eu beaucoup d'entraide entre les membres du groupe responsables de l'interface graphique
+pour que chacun puisse s'approprier les nouvelles méthodes nécéssaires à l'interface graphique du labyrinthe et des personnages.
+Il y a eu cependant quelques confusions en ce qui concerne la manière de coder et il est donc nécessaires lors
+des prochains sprints de plus communiquer et que chacun explique clairement ce qu'il fait.
+Nous avons également décidé de nommer nos commit plus précisemment que les fois précédentes.
