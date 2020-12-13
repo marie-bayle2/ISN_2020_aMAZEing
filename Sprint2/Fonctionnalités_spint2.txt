@@ -5,4 +5,4 @@
 - Faire une interface graphique.
 
 ### Monstres ###
-- Les monstres se déplacent de manière intelligente en essayant d’attraper le héros.
+- Le monstre se déplace de manière intelligente en essayant d’attraper le héros.

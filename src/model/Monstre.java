@@ -9,25 +9,28 @@ public class Monstre {
 	private int y; 
 	
 	//constructeur
-	public Monstre() {}
+	public Monstre() {
+		this.x = 15;
+		this.y = 15;
+	}
 	
 	
-	public Cmd OuBouger(Labyrinthe labyrinthe, Hero hero) {
+	public Cmd ouBouger(Labyrinthe labyrinthe, Hero hero) {
 		
 		Cmd commandeDuMonstre;
 		
 		ArrayList<Cmd> cmdPossible = new ArrayList<Cmd>();
-		if(hero.getx()<this.x) { // Le héro est en haut du monstre
-			if(labyrinthe.isFree(this.x-1,this.y)) cmdPossible.add(Cmd.UP); //test aller en haut si le héro est vers le haut
-			else if(hero.gety()<this.y) { //Si le héro est sur la gauche
-				if(labyrinthe.isFree(this.x,this.y-1)) cmdPossible.add(Cmd.LEFT);//test aller à gauche si le héro est vers la gauche
+		if(hero.getx()<this.x) { // Le hero est en haut du monstre
+			if(labyrinthe.isFree(this.x-1,this.y)) cmdPossible.add(Cmd.UP); //test aller en haut si le hero est vers le haut
+			else if(hero.gety()<this.y) { //Si le hero est sur la gauche
+				if(labyrinthe.isFree(this.x,this.y-1)) cmdPossible.add(Cmd.LEFT);//test aller a gauche si le hero est vers la gauche
 				else {
 					if (labyrinthe.isFree(this.x,this.y+1)) cmdPossible.add(Cmd.RIGHT); //teste aller Ã  droite
 					if (labyrinthe.isFree(this.x+1,this.y)) cmdPossible.add(Cmd.DOWN); //teste aller en bas
 				}
 			}
-			else if(hero.gety()>this.y) { //Si le héro est sur la droite
-				if(labyrinthe.isFree(this.x,this.y+1)) cmdPossible.add(Cmd.RIGHT);//test aller à gauche si le héro est vers la gauche
+			else if(hero.gety()>this.y) { //Si le hero est sur la droite
+				if(labyrinthe.isFree(this.x,this.y+1)) cmdPossible.add(Cmd.RIGHT);//test aller a gauche si le hero est vers la gauche
 				else {
 					if (labyrinthe.isFree(this.x+1,this.y)) cmdPossible.add(Cmd.DOWN); //teste aller en bas
 					if (labyrinthe.isFree(this.x,this.y-1)) cmdPossible.add(Cmd.LEFT); //teste aller Ã  gauche
@@ -35,42 +38,43 @@ public class Monstre {
 					 
 			}
 		}
-		else if(hero.getx()>this.x){ //Si le héro est en bas du monstre
-			if(labyrinthe.isFree(this.x+1,this.y)) cmdPossible.add(Cmd.DOWN); //test aller en bas si le héro est vers le bas
-			else if(hero.gety()<this.y) { //Si le héro est sur la gauche
-				if(labyrinthe.isFree(this.x,this.y-1)) cmdPossible.add(Cmd.LEFT);//test aller à gauche si le héro est vers la gauche
+		else if(hero.getx()>this.x){ //Si le hero est en bas du monstre
+			if(labyrinthe.isFree(this.x+1,this.y)) cmdPossible.add(Cmd.DOWN); //test aller en bas si le hero est vers le bas
+			else if(hero.gety()<this.y) { //Si le hero est sur la gauche
+				if(labyrinthe.isFree(this.x,this.y-1)) cmdPossible.add(Cmd.LEFT);//test aller a gauche si le hero est vers la gauche
 				else {
 					if (labyrinthe.isFree(this.x,this.y+1)) cmdPossible.add(Cmd.RIGHT); //teste aller Ã  droite
 					if (labyrinthe.isFree(this.x-1,this.y)) cmdPossible.add(Cmd.UP); //teste aller en haut
 				}
 			}
 			
-			else if(hero.gety()>this.y) { //Si le héro est sur la droite
-				if(labyrinthe.isFree(this.x,this.y+1)) cmdPossible.add(Cmd.RIGHT);//test aller à droite si le héro est vers la droite
+			else if(hero.gety()>this.y) { //Si le hero est sur la droite
+				if(labyrinthe.isFree(this.x,this.y+1)) cmdPossible.add(Cmd.RIGHT);//test aller a droite si le hero est vers la droite
 				else {
 					if (labyrinthe.isFree(this.x-1,this.y)) cmdPossible.add(Cmd.UP); //teste aller en haut
 					if (labyrinthe.isFree(this.x,this.y-1)) cmdPossible.add(Cmd.LEFT); //teste aller Ã  gauche
 				}
 			}
 		}
-		else { // Si ils sont sur la même ligne
-			if (hero.gety()<this.y) { //Si le héro est sur la gauche
-				if(labyrinthe.isFree(this.x,this.y-1)) cmdPossible.add(Cmd.LEFT);//test aller à gauche si le héro est vers la gauche
+		else { // Si ils sont sur la meme ligne
+			if (hero.gety()<this.y) { //Si le hero est sur la gauche
+				if(labyrinthe.isFree(this.x,this.y-1)) cmdPossible.add(Cmd.LEFT);//test aller a gauche si le hero est vers la gauche
 				else {
 					if (labyrinthe.isFree(this.x-1,this.y)) cmdPossible.add(Cmd.UP); //teste aller en haut
 					if (labyrinthe.isFree(this.x+1,this.y)) cmdPossible.add(Cmd.DOWN); //test aller en bas 
 				}
 			}
-			else if (hero.gety()>this.y) { //Si le héro est sur la droite
-				if(labyrinthe.isFree(this.x,this.y+1)) cmdPossible.add(Cmd.RIGHT);//test aller à droite si le héro est vers la droite
+			else if (hero.gety()>this.y) { //Si le hero est sur la droite
+				if(labyrinthe.isFree(this.x,this.y+1)) cmdPossible.add(Cmd.RIGHT);//test aller a droite si le hero est vers la droite
 				else {
 					if (labyrinthe.isFree(this.x-1,this.y)) cmdPossible.add(Cmd.UP); //teste aller en haut
 					if (labyrinthe.isFree(this.x+1,this.y)) cmdPossible.add(Cmd.DOWN); //test aller en bas 
 				}
 			}
 		}
-		
-		return commandeDuMonstre = cmdPossible.get((int)(Math.random()*cmdPossible.size()));
+		if (cmdPossible.size() != 0) commandeDuMonstre = cmdPossible.get((int)(Math.random()*cmdPossible.size()));
+		else commandeDuMonstre = Cmd.IDLE;
+		return commandeDuMonstre;
 	}
 
 	//Fais bouger le monstre
