@@ -1,0 +1,6 @@
+Compte rendu du sprint2
+
+Les plus gros problèmes que l'on a rencontré etait lié à l'interface graphique. En effet, il a fallut réorganiser 
+les codes de sortes à pouvoir avoir un affichage propre. On a donc d'abord effectué l'affichage du labyrinthe
+puis des differents personnages. On a donc notement créer une classe labyrinthe. Il reste également quelques 
+problèmes d'affichages notamment pour ce qui est des vies.
