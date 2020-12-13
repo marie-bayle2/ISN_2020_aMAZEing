@@ -38,7 +38,7 @@ public class Labyrinthe {
 	/**
 	 * verifier si la position est accessible
 	 */
-	public boolean isFree(int x, int y) {
+	public boolean isFree(int y, int x) {
 		//taille du labyrinthe lxh
 		if (x < 0 || y < 0 || x >= this.width || y >= this.height) return false; //hors du plateau
 		if (this.labyrinthe[x][y] == 1) return false; //La case est un mur

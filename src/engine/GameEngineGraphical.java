@@ -75,10 +75,10 @@ public class GameEngineGraphical {
 			// demande controle utilisateur
 			Cmd c = this.controller.getCommand();
 			// fait evoluer le game
-			hero = this.game.evolve(labyrinthe,c); 
-			//monstre = this.game.evolveM(labyrinthe,hero);
+			hero = this.game.evolve(labyrinthe,c);
+			monstre = this.game.evolveM(labyrinthe);
 			// affiche le game
-			this.gui.paint(hero);
+			this.gui.paint(hero, monstre, labyrinthe);
 			// met en attente
 			Thread.sleep(100);
 		}

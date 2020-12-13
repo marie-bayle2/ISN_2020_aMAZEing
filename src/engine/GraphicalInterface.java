@@ -3,8 +3,10 @@ package engine;
 import javax.swing.JFrame;
 
 import model.Hero;
+import model.Monstre;
 import model.PacmanController;
 import model.PacmanPainter;
+import model.Labyrinthe;
 
 
 /**
@@ -47,8 +49,8 @@ public class GraphicalInterface  {
 	/**
 	 * mise a jour du dessin
 	 */
-	public void paint(Hero hero) {
-		this.panel.drawGame(hero);	
+	public void paint(Hero hero, Monstre m, Labyrinthe lab) {
+		this.panel.drawGame(hero, m, lab);
 	}
 	
 }

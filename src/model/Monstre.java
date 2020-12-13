@@ -9,10 +9,13 @@ public class Monstre {
 	private int y; 
 	
 	//constructeur
-	public Monstre() {}
+	public Monstre() {
+		this.x = 15;
+		this.y = 15;
+	}
 	
 	
-	public Cmd OuBouger(Labyrinthe labyrinthe, Hero hero) {
+	public Cmd ouBouger(Labyrinthe labyrinthe, Hero hero) {
 		
 		Cmd commandeDuMonstre;
 		
@@ -69,8 +72,9 @@ public class Monstre {
 				}
 			}
 		}
-		
-		return commandeDuMonstre = cmdPossible.get((int)(Math.random()*cmdPossible.size()));
+		if (cmdPossible.size() != 0) commandeDuMonstre = cmdPossible.get((int)(Math.random()*cmdPossible.size()));
+		else commandeDuMonstre = Cmd.IDLE;
+		return commandeDuMonstre;
 	}
 
 	//Fais bouger le monstre
