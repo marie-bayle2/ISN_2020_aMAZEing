@@ -60,6 +60,14 @@ public class PacmanGame {
 
 	}
 
+	//place le monstre aléatoirement sur le labyrinthe
+	public Monstre placeMonstre(Hero hero, Labyrinthe l) {
+		do {
+			this.monstre.setx((int)(1 + Math.random()*17)); //entre 1 et width-1
+			this.monstre.sety((int)(1 + Math.random()*17)); //entre 1 et height-1
+		} while(l.isFree(this.monstre.getx(), this.monstre.gety()) == false || Math.abs(this.monstre.getx() - hero.getx()) < 2 || Math.abs(this.monstre.gety() - hero.gety()) < 2); //on s'assure de ne pas être sur un mur ou a moins de deux blocks du hero
+		return this.monstre;
+	}
 
 	public Monstre evolveM(Labyrinthe labyrinthe, Hero hero) {
 		Cmd c = this.monstre.ouBouger(labyrinthe, hero);
@@ -73,19 +81,22 @@ public class PacmanGame {
 	 * verifier si le jeu est fini
 	 */
 
-	public boolean isFinished() {
-//		//le héro trouve le trésor
-//		if (this.labyrinthe[this.hero.getx()][this.hero.gety()] == 2) {
-//			System.out.println("Le hero gagne la partie en trouvant le tresor !");
-//			return true;
-//		}
-//
-//		//le monstre tue le héro
-//		else if (this.hero.getx() == this.monstre.getx() && this.hero.gety() == this.monstre.gety()) {
-//			System.out.println("Le hero a perdu. Il s'est fait manger par le monstre.");
-//			return true;
-//		}
-//
+	public boolean isFinished(Labyrinthe l) {
+		//le héro trouve le trésor
+		if (l.getlabyrinthe()[this.hero.gety()][this.hero.getx()] == 2) {
+			System.out.println("Le hero gagne la partie en trouvant le tresor !");
+			return true;
+		}
+
+		//le monstre tue le héro
+		else if (this.hero.getx() == this.monstre.getx() && this.hero.gety() == this.monstre.gety()) {
+			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
+			if (this.hero.getVie() == 0) {
+				System.out.println("Le hero s'est fait manger par le monstre ! Il a perdu !");
+				return true;		
+			}
+		}
+
 		//sinon la game continue
 		return false;
 	}
