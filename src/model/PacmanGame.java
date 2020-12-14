@@ -49,8 +49,10 @@ public class PacmanGame {
 	 * faire evoluer le jeu suite a une commande
 	 * 
 	 * @param commande
+	 * 					lue a partir du clavier
 	 *
 	 * @param labyrinthe
+	 * 					optenu a partir du fichier texte
 	 */
 	public Hero evolve(Labyrinthe labyrinthe, Cmd commande) {
 		this.hero.action(labyrinthe, commande);
