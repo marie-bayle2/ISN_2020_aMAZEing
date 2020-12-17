@@ -10,11 +10,9 @@ public class Monstre {
 	
 	//constructeur
 	public Monstre() {
-		this.x = 15;
-		this.y = 15;
 	}
-	
-	
+
+	//Dis ou le hero doit bouger pour atteindre le hero
 	public Cmd ouBouger(Labyrinthe labyrinthe, Hero hero) {
 		
 		Cmd commandeDuMonstre;

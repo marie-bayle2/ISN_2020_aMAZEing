@@ -6,15 +6,18 @@ public class Hero {
 	
 	private int x;
 	private int y;
+	private int vie;
 	
 	public Hero() {
 		this.x = 1;
 		this.y = 1;
+		this.vie = 3;
 	}
 	
 	public Hero(int x, int y) {
 		this.x = x;
 		this.y = y;
+		this.vie = 3;
 	}
 	
 	
@@ -47,6 +50,15 @@ public class Hero {
 
 	public int gety(){
 		return this.y;
+	}
+
+	public int getVie(){
+		return this.vie;
+	}
+
+	//setter
+	public void setVie(int nVie){
+		this.vie = nVie;
 	}
 
 	//toString

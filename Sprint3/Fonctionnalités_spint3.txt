@@ -1,0 +1,20 @@
+### Héro ###
+- Modifications des commandes : commandes conventionelles (ZQSD) ou flèches.
+- Faire en sorte que le héro ai une période d'invincibilité après avoir été touché.
+
+### Labyrinthes ###
+- Faire un plus grand labyrinthe.
+- Modifier le design de l'interface graphique avec des images.
+- Ajout d'un message de fin de jeu.
+- Ajout de pieges.
+
+### Monstres ###
+- Ajout de plusieurs monstres.
+- Ralentir un peu le monstre.
+- Les monstres ne bougent plus pendant une période quand le héro est touché.
+
+### Fantômes ###
+- Ajout de fantômes qui se déplacent de haut en bas en passant à travers les murs.
+
+### Tests ###
+- Ajouter des tests.
