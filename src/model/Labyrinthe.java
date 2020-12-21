@@ -9,6 +9,9 @@ public class Labyrinthe {
 	private int labyrinthe[][];
 	private int width;
 	private int height;
+	public static final int MUR = 1;
+	public static final int TRESOR = 2;
+
 	
 	public Labyrinthe(String nomFichier) throws IOException{
 
@@ -39,9 +42,8 @@ public class Labyrinthe {
 	 * verifier si la position est accessible
 	 */
 	public boolean isFree(int y, int x) {
-		//taille du labyrinthe lxh
 		if (x < 0 || y < 0 || x >= this.width || y >= this.height) return false; //hors du plateau
-		if (this.labyrinthe[x][y] == 1) return false; //La case est un mur
+		if (this.labyrinthe[x][y] == this.MUR) return false; //La case est un mur
 		return true; //la case est libre
 
 	}

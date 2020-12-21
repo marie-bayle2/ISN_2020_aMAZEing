@@ -9,7 +9,12 @@ public class Monstre {
 	private int y; 
 	
 	//constructeur
-	public Monstre() {
+	public Monstre(Labyrinthe labyrinthe, Hero hero) {
+		do {
+			this.x = (int)(1 + Math.random()*17); //entre 1 et width-1
+			this.y = (int)(1 + Math.random()*17); //entre 1 et height-1
+		} while(labyrinthe.isFree(this.x, this.y) == false || Math.abs(this.x - hero.getx()) < 2 || Math.abs(this.y - hero.gety()) < 2); //on s'assure de ne pas être sur un mur ou a moins de deux blocks du hero
+
 	}
 
 	//Dis ou le hero doit bouger pour atteindre le hero

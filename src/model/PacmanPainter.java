@@ -36,24 +36,46 @@ public class PacmanPainter {
 		//dessin du labyrinthe
   		int dx = this.WIDTH/17;
   		int dy = (this.HEIGHT-20*2)/17;
-		for (int i = 0; i < l.getlabyrinthe().length; i++) {
-			for (int j = 0; j < l.getlabyrinthe()[0].length; j++) {
-				if (l.getlabyrinthe()[i][j] == 1) crayon.setColor(Color.BLACK);			
-				else if (l.getlabyrinthe()[i][j] == 2) crayon.setColor(Color.RED);
-				else crayon.setColor(Color.GREEN);
-				crayon.fillRect(dx*j, dy*i, dx, dy);
+  		try {
+  			Image img_mur = ImageIO.read(new File("src/mur.png"));
+  			Image img_tresor = ImageIO.read(new File("src/piece.png"));
+  			Image img_sol = ImageIO.read(new File("src/mur_blanc.png"));
+			for (int i = 0; i < l.getlabyrinthe().length; i++) {
+				for (int j = 0; j < l.getlabyrinthe()[0].length; j++) {
+					if (l.getlabyrinthe()[i][j] == l.MUR) { //mur
+						crayon.drawImage(img_mur, dx*j, dy*i, dx, dy, null);
+						
+					}		
+					else if (l.getlabyrinthe()[i][j] == l.TRESOR) { //tresor
+						crayon.drawImage(img_tresor, dx*j, dy*i, dx, dy, null);
+						
+					}
+					else {
+						crayon.drawImage(img_sol, dx*j, dy*i, dx, dy, null);
+					}
+				}
 			}
+		} catch (IOException e) {
+			System.out.println("Error.");
 		}
 
 		//dessin du héro
 		int x = hero.getx();
 		int y = hero.gety();
-		crayon.setColor(Color.blue);
-		crayon.fillOval(x*dx,y*dy,dx,dy);
+		try {
+			Image img = ImageIO.read(new File("src/smiley.png"));
+			crayon.drawImage(img, x*dx,y*dy,dx,dy, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		//dessin du monstre
-		crayon.setColor(Color.PINK);
-		crayon.fillOval(monstre.getx()*dx,monstre.gety()*dy,dx,dy);
+		try {
+			Image img = ImageIO.read(new File("src/monstre2.png"));
+			crayon.drawImage(img, monstre.getx()*dx,monstre.gety()*dy,dx,dy, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		//vie du héro
 		if (hero.getVie() == 3) {
@@ -64,7 +86,7 @@ public class PacmanPainter {
 				crayon.drawImage(img, 11*dx, this.HEIGHT - 20*2, 20*2, 20*2, null);
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
+			} 
 
 		}
 		else if (hero.getVie() == 2) {

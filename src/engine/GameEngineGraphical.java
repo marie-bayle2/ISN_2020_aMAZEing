@@ -17,9 +17,6 @@ import model.PacmanPainter;
  */
 public class GameEngineGraphical {
 	
-	private Hero hero;
-	private Monstre monstre;
-	private Labyrinthe labyrinthe;
 
 	/**
 	 * le game a executer
@@ -64,33 +61,29 @@ public class GameEngineGraphical {
 	 * @throws IOException
 	 */
 	public void run() throws InterruptedException, IOException {
-		// creation du labyrinthe
-		labyrinthe = new Labyrinthe("src/labyrinthe.txt");
-
 		// creation de l'interface graphique
 		this.gui = new GraphicalInterface(this.painter,this.controller);
 
 		// boucle de game
 		int compteur = 0;
-		while (!this.game.isFinished(labyrinthe)) {
+		while (!this.game.isFinished()) {
 			// demande controle utilisateur
 			Cmd c = this.controller.getCommand();
 			// fait evoluer le game
-			hero = this.game.evolve(labyrinthe,c);
+			this.game.evolve(c);
+
 			//evoluer monstre
-			//on place le monstre de maniere random au debut
-			if (compteur == 0) monstre = this.game.placeMonstre(hero, labyrinthe);
 			//on le fait evoluer une fois sur deux pour qu'il ai une vitesse raisonable
-			else if (compteur%2 == 0) monstre = this.game.evolveM(labyrinthe, hero);
+			if (compteur%3 == 0) this.game.evolveM();
 			// affiche le game
-			this.gui.paint(hero, monstre, labyrinthe);
+			this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe());
 			// met en attente
 			Thread.sleep(100);
 			//incremente le comtpeur
 			compteur++;
 		}
 		//affiche une derniere fois l'image (pour avoir les 3 coeurs vides)
-		this.gui.paint(hero, monstre, labyrinthe);
+		this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe());
 	}
 
 }

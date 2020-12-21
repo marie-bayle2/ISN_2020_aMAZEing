@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
 
 		// creation du jeu particulier et de son afficheur
-		PacmanGame game = new PacmanGame("src/labyrinthe.txt");
+		PacmanGame game = new PacmanGame("src/help.txt");
 		PacmanPainter painter = new PacmanPainter();
 		PacmanController controller = new PacmanController();
 
