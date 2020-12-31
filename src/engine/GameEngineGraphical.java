@@ -66,7 +66,21 @@ public class GameEngineGraphical {
 
 		// boucle de game
 		int compteur = 0;
+		int dureeShield = -1;
+		int ancienneVie = this.game.getHero().getVie();
 		while (!this.game.isFinished()) {
+			//gestion du bouclier
+			if (ancienneVie != this.game.getHero().getVie()){//le hero s'est fait attquer
+				ancienneVie = this.game.getHero().getVie();
+				dureeShield = 10; //on ajoute une seconde de shield
+				this.game.getHero().setShield(true);
+			}
+
+			if (dureeShield > 0) dureeShield--;
+			else if (dureeShield == 0) {
+				this.game.getHero().setShield(false);
+				dureeShield = -1;
+			}
 			// demande controle utilisateur
 			Cmd c = this.controller.getCommand();
 			// fait evoluer le game
@@ -81,6 +95,7 @@ public class GameEngineGraphical {
 			Thread.sleep(100);
 			//incremente le comtpeur
 			compteur++;
+
 		}
 		//affiche une derniere fois l'image (pour avoir les 3 coeurs vides)
 		this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe());

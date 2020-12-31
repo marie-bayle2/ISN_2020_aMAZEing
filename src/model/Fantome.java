@@ -18,7 +18,7 @@ public class Fantome {
 			c=1;
 			this.x = this.x + 1;
 		}
-		else if(this.x == labyrinthe.height-1) {
+		else if(this.x == labyrinthe.getHeight()-1) {
 			c=0;
 			this.x = this.x - 1;
 

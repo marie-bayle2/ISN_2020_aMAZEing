@@ -7,17 +7,20 @@ public class Hero {
 	private int x;
 	private int y;
 	private int vie;
+	private boolean shield;
 	
 	public Hero() {
 		this.x = 1;
 		this.y = 1;
 		this.vie = 3;
+		this.shield = false;
 	}
 	
 	public Hero(int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.vie = 3;
+		this.shield = false;
 	}
 	
 	
@@ -56,9 +59,17 @@ public class Hero {
 		return this.vie;
 	}
 
+	public boolean getShield(){
+		return this.shield;
+	}
+
 	//setter
 	public void setVie(int nVie){
 		this.vie = nVie;
+	}
+
+	public void setShield(boolean nShield){
+		this.shield = nShield;
 	}
 
 	//toString

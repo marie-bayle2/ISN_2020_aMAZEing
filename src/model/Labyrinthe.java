@@ -38,6 +38,11 @@ public class Labyrinthe {
 		return this.labyrinthe;
 	}
 	
+
+	public int getHeight(){
+		return this.height;
+	}
+	
 	/**
 	 * verifier si la position est accessible
 	 */
@@ -47,5 +52,7 @@ public class Labyrinthe {
 		return true; //la case est libre
 
 	}
+
+
 
 }

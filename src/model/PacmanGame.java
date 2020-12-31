@@ -69,7 +69,7 @@ public class PacmanGame {
 		}
 
 		//le monstre tue le héro
-		else if (this.hero.getx() == this.monstre.getx() && this.hero.gety() == this.monstre.gety()) {
+		else if (this.hero.getx() == this.monstre.getx() && this.hero.gety() == this.monstre.gety() && this.hero.getShield() == false) {
 			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
 			if (this.hero.getVie() == 0) {
 				System.out.println("Le hero s'est fait manger par le monstre ! Il a perdu !");
