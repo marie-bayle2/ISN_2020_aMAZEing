@@ -14,6 +14,7 @@ import model.Hero;
 import model.Monstre;
 import model.PacmanPainter;
 import model.Labyrinthe;
+import model.Fantome;
 
 public class DrawingPanel extends JPanel {
 
@@ -67,9 +68,9 @@ public class DrawingPanel extends JPanel {
 	 * demande de mettre a jour le rendu de l'image sur le Panel. Creer une
 	 * nouvelle image vide sur laquelle dessiner
 	 */
-	public void drawGame(Hero hero, Monstre m, Labyrinthe lab) {
+	public void drawGame(Hero hero, Monstre m, Labyrinthe lab, Fantome f) {
 		// generer la nouvelle image
-		this.painter.draw(this.nextImage, hero, m, lab);
+		this.painter.draw(this.nextImage, hero, m, lab, f);
 
 		// inverses les images doublebuffereing
 		BufferedImage temp = this.currentImage;

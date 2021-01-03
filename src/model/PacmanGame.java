@@ -19,8 +19,7 @@ public class PacmanGame {
 	private Hero hero;
 	private Monstre monstre;
 	private Labyrinthe labyrinthe;
-	private int width;
-	private int height;
+	private Fantome fantome;
 
 	/**
 	 * constructeur avec fichier source pour le help
@@ -28,11 +27,13 @@ public class PacmanGame {
 	 */
 	public PacmanGame(String source) throws IOException{
 		//creation de labyrinthe
-		this.labyrinthe = new Labyrinthe("src/labyrinthe.txt");
+		this.labyrinthe = new Labyrinthe(source);
 		//creation du hero
 		this.hero = new Hero();
 		//creation du monstre
 		this.monstre = new Monstre(this.labyrinthe, this.hero);
+		//creation du fantome
+		this.fantome = new Fantome(this.labyrinthe);
 		
 	}
 
@@ -43,19 +44,18 @@ public class PacmanGame {
 	 *
 	 * @param labyrinthe
 	 */
-	public void evolve(Cmd commande) {
+	public void evolve(Cmd commande, int compteur) {
 		this.hero.action(this.labyrinthe, commande);
-		//this.monstre.bouger(this.monstre.ouBouger(labyrinthe, this.hero));
 		System.out.println("Execute "+commande);
-		
 
+		//le monstre bouge un tic sur trois
+		if (compteur%3 == 0) this.monstre.bouger(this.monstre.ouBouger(this.labyrinthe, this.hero));
+
+		//le fantome bouge un tic sur deux
+		if (compteur%2 == 0) this.fantome.bouger(this.labyrinthe);
 	}
 
-	public Monstre evolveM() {
-		Cmd c = this.monstre.ouBouger(this.labyrinthe, this.hero);
-		this.monstre.bouger(c);
-		return this.monstre;
-	}
+
 
 	/**
 	 * verifier si le jeu est fini
@@ -68,11 +68,38 @@ public class PacmanGame {
 			return true;
 		}
 
-		//le monstre tue le héro
+		//le monstre touche le héro
 		else if (this.hero.getx() == this.monstre.getx() && this.hero.gety() == this.monstre.gety() && this.hero.getShield() == false) {
 			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
 			if (this.hero.getVie() == 0) {
 				System.out.println("Le hero s'est fait manger par le monstre ! Il a perdu !");
+				return true;		
+			}
+		}
+
+		//le fantome touche le hero
+		else if (this.hero.getx() == this.fantome.getx() && this.hero.gety() == this.fantome.gety() && this.hero.getShield() == false) {
+			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
+			if (this.hero.getVie() == 0) {
+				System.out.println("Le hero s'est fait manger par le Fantome ! Il a perdu !");
+				return true;		
+			}
+		}
+
+		//le hero marche sur un piege1
+		else if (this.labyrinthe.getlabyrinthe()[this.hero.gety()][this.hero.getx()] == this.labyrinthe.PIEGE1 && this.hero.getShield() == false){
+			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
+			if (this.hero.getVie() == 0) {
+				System.out.println("Le hero est tombe dans un piege ! Il a perdu !");
+				return true;		
+			}
+		}
+
+		//le hero marche sur un piege2
+		else if (this.labyrinthe.getlabyrinthe()[this.hero.gety()][this.hero.getx()] == this.labyrinthe.PIEGE2 && this.hero.getShield() == false){
+			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
+			if (this.hero.getVie() == 0) {
+				System.out.println("Le hero est tombe dans un piege ! Il a perdu !");
 				return true;		
 			}
 		}
@@ -92,6 +119,10 @@ public class PacmanGame {
 
 	public Labyrinthe getLabyrinthe() {
 		return this.labyrinthe;
+	}
+
+	public Fantome getFantome() {
+		return this.fantome;
 	}
 	
 

@@ -7,27 +7,32 @@ public class Fantome {
 	private int y; 
 	
 	//constructeur
-	public Fantome() {
+	public Fantome(Labyrinthe labyrinthe) {
+		//il commence en haut on en bas
+		if ((int)(Math.random()*2) == 0) this.y = 1;
+		else this.y = labyrinthe.getHeight() - 1;
+		//on choisit sa position lateralle
+		this.x = (int)(2 + Math.random()*(labyrinthe.getWidth() - 2));
 	}
 	
 	public static int c;
 	
 	public void bouger(Labyrinthe labyrinthe){
 
-		if(this.x == 1){
+		if(this.y == 1){
 			c=1;
-			this.x = this.x + 1;
+			this.y = this.y + 1;
 		}
-		else if(this.x == labyrinthe.getHeight()-1) {
+		else if(this.y == labyrinthe.getHeight()-2) {
 			c=0;
-			this.x = this.x - 1;
+			this.y = this.y - 1;
 
 		}
 		else {
 			if(c==1) {
-				this.x = this.x + 1;}
+				this.y = this.y + 1;}
 			else {
-				this.x = this.x - 1;
+				this.y = this.y - 1;
 			}
 		}
 	}

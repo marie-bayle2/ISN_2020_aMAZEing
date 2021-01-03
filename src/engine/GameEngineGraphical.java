@@ -8,6 +8,7 @@ import model.Monstre;
 import model.PacmanController;
 import model.PacmanGame;
 import model.PacmanPainter;
+import model.Fantome;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -84,13 +85,9 @@ public class GameEngineGraphical {
 			// demande controle utilisateur
 			Cmd c = this.controller.getCommand();
 			// fait evoluer le game
-			this.game.evolve(c);
-
-			//evoluer monstre
-			//on le fait evoluer une fois sur deux pour qu'il ai une vitesse raisonable
-			if (compteur%3 == 0) this.game.evolveM();
+			this.game.evolve(c, compteur);
 			// affiche le game
-			this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe());
+			this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome());
 			// met en attente
 			Thread.sleep(100);
 			//incremente le comtpeur
@@ -98,7 +95,7 @@ public class GameEngineGraphical {
 
 		}
 		//affiche une derniere fois l'image (pour avoir les 3 coeurs vides)
-		this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe());
+		this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome());
 	}
 
 }
