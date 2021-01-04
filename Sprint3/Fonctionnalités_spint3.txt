@@ -1,6 +1,9 @@
 ### Héro ###
 - Modifications des commandes : commandes conventionelles (ZQSD) ou flèches.
-- Faire en sorte que le héro ai une période d'invincibilité après avoir été touché.
+- Ajouter une armure au héro qui s'active pendant quelques temps à définir lorsqu'il
+ à été touché par une monstre.
+- Le héro peut lacer des boules. Si elle arrive sur un monstre, le monstre meurt. Si
+elle arrive dans un mur, il ne se passe rien.
 
 ### Labyrinthes ###
 - Faire un plus grand labyrinthe.
@@ -9,9 +12,8 @@
 - Ajout de pieges.
 
 ### Monstres ###
-- Ajout de plusieurs monstres.
+- Ajout de plusieurs monstres de ce type.
 - Ralentir un peu le monstre.
-- Les monstres ne bougent plus pendant une période quand le héro est touché.
 
 ### Fantômes ###
 - Ajout de fantômes qui se déplacent de haut en bas en passant à travers les murs.

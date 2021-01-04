@@ -6,10 +6,16 @@ import engine.Cmd;
 
 public class Monstre {
 	private int x;
-	private int y; 
+	private int y;
+	private boolean estActif;
 	
 	//constructeur
-	public Monstre() {
+	public Monstre(Labyrinthe labyrinthe, Hero hero) {
+		do {
+			this.x = (int)(1 + Math.random()*17); //entre 1 et width-1
+			this.y = (int)(1 + Math.random()*17); //entre 1 et height-1
+		} while(labyrinthe.isFree(this.x, this.y) == false || Math.abs(this.x - hero.getx()) < 2 || Math.abs(this.y - hero.gety()) < 2); //on s'assure de ne pas être sur un mur ou a moins de deux blocks du hero
+		this.estActif = true;
 	}
 
 	//Dis ou le hero doit bouger pour atteindre le hero
@@ -105,6 +111,10 @@ public class Monstre {
 		return this.y;
 	}
 
+	public boolean getEstActif(){
+		return this.estActif;
+	}
+
 	//setter
 	public void setx(int newx){
 		this.x = newx;
@@ -114,7 +124,10 @@ public class Monstre {
 		this.y = newy;
 	}
 
-	//toString
+	public void setEstActif(boolean b){
+		this.estActif = b;
+	}
+
 	//toString
 	public String toString() {
 		return "Le monstre est aux coordonnees (" + this.x + ", " + this.y + ")."; 

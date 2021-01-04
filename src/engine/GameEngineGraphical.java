@@ -8,6 +8,8 @@ import model.Monstre;
 import model.PacmanController;
 import model.PacmanGame;
 import model.PacmanPainter;
+import model.Fantome;
+import model.Tire;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -17,9 +19,6 @@ import model.PacmanPainter;
  */
 public class GameEngineGraphical {
 	
-	private Hero hero;
-	private Monstre monstre;
-	private Labyrinthe labyrinthe;
 
 	/**
 	 * le game a executer
@@ -64,33 +63,45 @@ public class GameEngineGraphical {
 	 * @throws IOException
 	 */
 	public void run() throws InterruptedException, IOException {
-		// creation du labyrinthe
-		labyrinthe = new Labyrinthe("src/labyrinthe.txt");
-
 		// creation de l'interface graphique
 		this.gui = new GraphicalInterface(this.painter,this.controller);
 
 		// boucle de game
 		int compteur = 0;
-		while (!this.game.isFinished(labyrinthe)) {
+		int dureeShield = -1;
+		int ancienneVie = this.game.getHero().getVie();
+		Tire tire = null;
+		while (!this.game.isFinished()) {
+			//gestion du bouclier
+			if (ancienneVie != this.game.getHero().getVie()){//le hero s'est fait attquer
+				ancienneVie = this.game.getHero().getVie();
+				dureeShield = 10; //on ajoute une seconde de shield
+				this.game.getHero().setShield(true);
+			}
+
+			if (dureeShield > 0) dureeShield--;
+			else if (dureeShield == 0) {
+				this.game.getHero().setShield(false);
+				dureeShield = -1;
+			}
 			// demande controle utilisateur
 			Cmd c = this.controller.getCommand();
+			if (c.toString().charAt(0) == 'T') { //alors on tire
+				tire = new Tire(this.game.getLabyrinthe(), this.game.getMonstre(), c, this.game.getHero().getx(), this.game.getHero().gety());
+			}
 			// fait evoluer le game
-			hero = this.game.evolve(labyrinthe,c);
-			//evoluer monstre
-			//on place le monstre de maniere random au debut
-			if (compteur == 0) monstre = this.game.placeMonstre(hero, labyrinthe);
-			//on le fait evoluer une fois sur deux pour qu'il ai une vitesse raisonable
-			else if (compteur%2 == 0) monstre = this.game.evolveM(labyrinthe, hero);
+			this.game.evolve(c, compteur, tire);
 			// affiche le game
-			this.gui.paint(hero, monstre, labyrinthe);
+			this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome(), tire);
 			// met en attente
 			Thread.sleep(100);
 			//incremente le comtpeur
 			compteur++;
+			tire = null;
+
 		}
 		//affiche une derniere fois l'image (pour avoir les 3 coeurs vides)
-		this.gui.paint(hero, monstre, labyrinthe);
+		this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome(), tire);
 	}
 
 }

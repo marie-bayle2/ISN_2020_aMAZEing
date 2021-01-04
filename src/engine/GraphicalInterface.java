@@ -7,6 +7,8 @@ import model.Monstre;
 import model.PacmanController;
 import model.PacmanPainter;
 import model.Labyrinthe;
+import model.Fantome;
+import model.Tire;
 
 
 /**
@@ -49,8 +51,8 @@ public class GraphicalInterface  {
 	/**
 	 * mise a jour du dessin
 	 */
-	public void paint(Hero hero, Monstre m, Labyrinthe lab) {
-		this.panel.drawGame(hero, m, lab);
+	public void paint(Hero hero, Monstre m, Labyrinthe lab, Fantome f, Tire tire) {
+		this.panel.drawGame(hero, m, lab, f, tire);
 	}
 	
 }

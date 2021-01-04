@@ -44,26 +44,36 @@ public class PacmanController implements KeyListener {
 	 */
 	public void keyPressed(KeyEvent e) {
 
-		switch (e.getKeyChar()) {
-		// si on appuie sur 'q',commande joueur est gauche
-		case 'l':
-		case 'L':
+		switch (e.getKeyCode()) {
+		case 'q':
+		case 'Q':
 			this.commandeEnCours = Cmd.LEFT;
-			break;
-		case 'r':
-		case 'R':
-			this.commandeEnCours = Cmd.RIGHT;
-			break;
-		case 'u':
-		case 'U':
-			this.commandeEnCours = Cmd.UP;
 			break;
 		case 'd':
 		case 'D':
+			this.commandeEnCours = Cmd.RIGHT;
+			break;
+		case 'z':
+		case 'Z':
+			this.commandeEnCours = Cmd.UP;
+			break;
+		case 's':
+		case 'S':
 			this.commandeEnCours = Cmd.DOWN;
 			break;
+		case KeyEvent.VK_UP:
+			this.commandeEnCours = Cmd.T_UP;
+			break;
+		case KeyEvent.VK_DOWN:
+			this.commandeEnCours = Cmd.T_DOWN;
+			break;
+		case KeyEvent.VK_LEFT:
+			this.commandeEnCours = Cmd.T_LEFT;
+			break;
+		case KeyEvent.VK_RIGHT:
+			this.commandeEnCours = Cmd.T_RIGHT;
+			break;
 		}
-
 	}
 
 	@Override
