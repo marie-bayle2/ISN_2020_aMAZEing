@@ -1,6 +1,12 @@
 package engine;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 import model.Hero;
 import model.Labyrinthe;
@@ -102,6 +108,20 @@ public class GameEngineGraphical {
 		}
 		//affiche une derniere fois l'image (pour avoir les 3 coeurs vides)
 		this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome(), tire);
+		JFrame fenetre = new JFrame();
+		fenetre.setTitle("Fin du jeu");
+		fenetre.setSize(600,400);
+		String txt = "";
+		if (this.game.getVictoire() == false) txt = "Game Over !";
+		else txt = "Le hero entre dans la legende !";
+	
+		JLabel label = new JLabel(txt);
+		label.setFont(new Font("Courier New", Font.ITALIC, 30));
+		label.setForeground(Color.RED);
+		fenetre.add(label);
+		fenetre.getContentPane().add(label);
+		fenetre.setVisible(true);
 	}
+	
 
 }
