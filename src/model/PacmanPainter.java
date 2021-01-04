@@ -31,7 +31,7 @@ public class PacmanPainter {
 	/**
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
-	public void draw(BufferedImage im, Hero hero, Monstre monstre, Labyrinthe l, Fantome fantome) {
+	public void draw(BufferedImage im, Hero hero, Monstre monstre, Labyrinthe l, Fantome fantome, Tire tire) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		//dessin du labyrinthe
   		int dx = 20;
@@ -78,11 +78,13 @@ public class PacmanPainter {
 		}
 
 		//dessin du monstre
-		try {
-			Image img = ImageIO.read(new File("src/monstre2.png"));
-			crayon.drawImage(img, monstre.getx()*dx,monstre.gety()*dy,dx,dy, null);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (monstre.getEstActif() == true) {
+			try {
+				Image img = ImageIO.read(new File("src/monstre2.png"));
+				crayon.drawImage(img, monstre.getx()*dx,monstre.gety()*dy,dx,dy, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 		//dessin du fantome
@@ -93,7 +95,15 @@ public class PacmanPainter {
 			e.printStackTrace();
 		}
 
-		//vie du héro
+		//dessin du tire si il y a
+		if (tire != null) {
+			int[] c = tire.getCoords();
+			for (int i:c) System.out.println(i);
+			crayon.setColor(Color.RED);
+			crayon.drawLine(c[0]*dx + dx/2, c[1]*dx + dx/2, c[2]*dx + dx/2, c[3]*dx + dx/2);
+		}
+
+		//vie du hero
 		if (hero.getVie() == 3) {
 			try {
 				Image img = ImageIO.read(new File("src/coeur.jpg"));

@@ -9,6 +9,7 @@ import model.PacmanController;
 import model.PacmanGame;
 import model.PacmanPainter;
 import model.Fantome;
+import model.Tire;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -69,6 +70,7 @@ public class GameEngineGraphical {
 		int compteur = 0;
 		int dureeShield = -1;
 		int ancienneVie = this.game.getHero().getVie();
+		Tire tire = null;
 		while (!this.game.isFinished()) {
 			//gestion du bouclier
 			if (ancienneVie != this.game.getHero().getVie()){//le hero s'est fait attquer
@@ -84,18 +86,22 @@ public class GameEngineGraphical {
 			}
 			// demande controle utilisateur
 			Cmd c = this.controller.getCommand();
+			if (c.toString().charAt(0) == 'T') { //alors on tire
+				tire = new Tire(this.game.getLabyrinthe(), this.game.getMonstre(), c, this.game.getHero().getx(), this.game.getHero().gety());
+			}
 			// fait evoluer le game
-			this.game.evolve(c, compteur);
+			this.game.evolve(c, compteur, tire);
 			// affiche le game
-			this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome());
+			this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome(), tire);
 			// met en attente
 			Thread.sleep(100);
 			//incremente le comtpeur
 			compteur++;
+			tire = null;
 
 		}
 		//affiche une derniere fois l'image (pour avoir les 3 coeurs vides)
-		this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome());
+		this.gui.paint(this.game.getHero(), this.game.getMonstre(), this.game.getLabyrinthe(), this.game.getFantome(), tire);
 	}
 
 }

@@ -43,7 +43,6 @@ public class Hero {
 			if (labyrinthe.isFree(this.x, this.y+1)) this.y = this.y + 1;
 			
 		}
-		if (commande == Cmd.IDLE) {}	
 	}
 
 	//getter

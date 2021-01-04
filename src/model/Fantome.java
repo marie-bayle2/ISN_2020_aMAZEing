@@ -4,15 +4,18 @@ import java.util.ArrayList;
 
 public class Fantome {
 	private int x;
-	private int y; 
+	private int y;
+	private boolean estActif;
 	
 	//constructeur
 	public Fantome(Labyrinthe labyrinthe) {
+		this.estActif = true;
 		//il commence en haut on en bas
 		if ((int)(Math.random()*2) == 0) this.y = 1;
 		else this.y = labyrinthe.getHeight() - 1;
 		//on choisit sa position lateralle
 		this.x = (int)(2 + Math.random()*(labyrinthe.getWidth() - 2));
+
 	}
 	
 	public static int c;
@@ -45,6 +48,10 @@ public class Fantome {
 		return this.y;
 	}
 
+	public boolean getEstActif(){
+		return this.estActif;
+	}
+
 	//setter
 	public void setx(int newx){
 		this.x = newx;
@@ -52,6 +59,10 @@ public class Fantome {
 
 	public void sety(int newy){
 		this.y = newy;
+	}
+	
+	public void setEstActif(boolean b){
+		this.estActif = b;
 	}
 
 	//toString

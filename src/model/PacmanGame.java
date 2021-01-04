@@ -44,7 +44,9 @@ public class PacmanGame {
 	 *
 	 * @param labyrinthe
 	 */
-	public void evolve(Cmd commande, int compteur) {
+	public void evolve(Cmd commande, int compteur, Tire tire) {
+		//hero
+		//si la commande commence par T alors c'est pour tirer
 		this.hero.action(this.labyrinthe, commande);
 		System.out.println("Execute "+commande);
 
@@ -53,6 +55,15 @@ public class PacmanGame {
 
 		//le fantome bouge un tic sur deux
 		if (compteur%2 == 0) this.fantome.bouger(this.labyrinthe);
+
+		//on regarde si le hero tue le monstre
+		if (tire != null){
+			if (tire.getToucheMonstre()) {
+				this.monstre.setEstActif(false);
+				this.monstre.setx(0);
+				this.monstre.sety(0);
+			}
+		}
 	}
 
 
