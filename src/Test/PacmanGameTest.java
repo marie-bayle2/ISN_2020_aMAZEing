@@ -1,42 +1,22 @@
 package Test;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class PacmanGameTest {
 
-class PacmanGameTest {
-
-    @BeforeEach
-    void setUp() {
+    @org.junit.Before
+    public void setUp() throws Exception {
     }
 
-    @AfterEach
-    void tearDown() {
+    @org.junit.After
+    public void tearDown() throws Exception {
     }
 
-    @Test
-    void evolve() {
+    @org.junit.Test
+    public void evolve() {
     }
 
-    @Test
-    void isFinished() {
-    }
-
-    @Test
-    void getHero() {
-    }
-
-    @Test
-    void getMonstre() {
-    }
-
-    @Test
-    void getLabyrinthe() {
-    }
-
-    @Test
-    void getFantome() {
+    @org.junit.Test
+    public void isFinished() {
     }
 }
