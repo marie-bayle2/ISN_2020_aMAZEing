@@ -20,6 +20,7 @@ public class PacmanGame {
 	private Monstre monstre;
 	private Labyrinthe labyrinthe;
 	private Fantome fantome;
+	private boolean victoire;
 
 	/**
 	 * constructeur avec fichier source pour le help
@@ -76,6 +77,7 @@ public class PacmanGame {
 		//le héro trouve le trésor
 		if (this.labyrinthe.getlabyrinthe()[this.hero.gety()][this.hero.getx()] == this.labyrinthe.TRESOR) {
 			System.out.println("Le hero gagne la partie en trouvant le tresor !");
+			victoire = true;
 			return true;
 		}
 
@@ -84,6 +86,7 @@ public class PacmanGame {
 			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
 			if (this.hero.getVie() == 0) {
 				System.out.println("Le hero s'est fait manger par le monstre ! Il a perdu !");
+				victoire = false;
 				return true;		
 			}
 		}
@@ -93,6 +96,7 @@ public class PacmanGame {
 			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
 			if (this.hero.getVie() == 0) {
 				System.out.println("Le hero s'est fait manger par le Fantome ! Il a perdu !");
+				victoire = false;
 				return true;		
 			}
 		}
@@ -102,6 +106,7 @@ public class PacmanGame {
 			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
 			if (this.hero.getVie() == 0) {
 				System.out.println("Le hero est tombe dans un piege ! Il a perdu !");
+				victoire = false;
 				return true;		
 			}
 		}
@@ -111,6 +116,7 @@ public class PacmanGame {
 			this.hero.setVie(this.hero.getVie() - 1); //le hero perd un pt de vie
 			if (this.hero.getVie() == 0) {
 				System.out.println("Le hero est tombe dans un piege ! Il a perdu !");
+				victoire = false;
 				return true;		
 			}
 		}
