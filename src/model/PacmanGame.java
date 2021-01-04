@@ -141,6 +141,8 @@ public class PacmanGame {
 	public Fantome getFantome() {
 		return this.fantome;
 	}
-	
+	public boolean getVictoire() {
+		return this.victoire;
+	}
 
 }
