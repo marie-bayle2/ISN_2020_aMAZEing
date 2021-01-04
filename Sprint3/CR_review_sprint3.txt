@@ -1,0 +1,5 @@
+Compte-rendu review du sprint 3
+
+Lors de ce sprint, nous avons dû enlever une des fonctionnalités que nous avions prévu, à savoir le fait de mettre plusieurs monstre du
+même type car nous manquions de temps. De plus, nous n'avions pas anticipé le temps que prenaient à faire des tests durant un sprint car c'est la première fois qu'on
+en incluait. Cest donc ce temps que nous avons passé en plus sur les tests qui fait que nous avonbs retiré une fonctionnalité.

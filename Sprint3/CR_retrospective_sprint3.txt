@@ -1,0 +1,6 @@
+Compte-rendu retrospective du sprint 3
+
+Pour le sprint 3 de ce projet, nous avons continué à communiquer via messenger afin de nous répartir les tâches et de partager notre avancé avec
+les autres membres du groupe durant les vacances.
+Avec les vacances de noël qui sont souvent très remplies et dans lesquelles nous avons souvent peu de temps à consacrer aux études, nous avons eu en réalité peu de temps
+pour réaliser toutes les fonctionnalités que nous avions prévues.
