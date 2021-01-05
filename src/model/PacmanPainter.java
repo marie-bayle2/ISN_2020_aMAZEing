@@ -98,7 +98,6 @@ public class PacmanPainter {
 		//dessin du tire si il y a
 		if (tire != null) {
 			int[] c = tire.getCoords();
-			for (int i:c) System.out.println(i);
 			crayon.setColor(Color.RED);
 			crayon.drawLine(c[0]*dx + dx/2, c[1]*dx + dx/2, c[2]*dx + dx/2, c[3]*dx + dx/2);
 		}

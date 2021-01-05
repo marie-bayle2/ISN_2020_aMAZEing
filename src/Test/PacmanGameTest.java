@@ -1,27 +1,30 @@
-package Test;
+package test;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
-public class PacmanGameTest {
+class PacmanGameTest {
 
-    @org.junit.Before
-    public void setUp() throws Exception {
+    @Test
+    void evolve() {
     }
 
-    @org.junit.After
-    public void tearDown() throws Exception {
+    @Test
+    void isFinished() {
     }
 
-    @org.junit.Test
-    public void evolve() {
+    @Test
+    void getHero() {
     }
 
-    @org.junit.Test
-    public void isFinished() {
-     	//le hero tombe sur le tresor
-    	int heros=this.labyrinthe.TRESOR;
-    	assertEquals("erreur sur trouver le tresors",heros.isFinished(),True);
-    	//le hero tombe sur un monstre
-   
+    @Test
+    void getMonstre() {
+    }
+
+    @Test
+    void getLabyrinthe() {
+    }
+
+    @Test
+    void getFantome() {
     }
 }

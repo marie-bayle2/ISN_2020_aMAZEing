@@ -8,6 +8,9 @@ public class Monstre {
 	private int x;
 	private int y;
 	private boolean estActif;
+
+	//constructeur par defaut
+	public Monstre() {}
 	
 	//constructeur
 	public Monstre(Labyrinthe labyrinthe, Hero hero) {

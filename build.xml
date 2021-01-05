@@ -1,17 +1,29 @@
 <project>
+    <property name = "full-compile" value = "true" />
+
+    <path id = "classpath.base"/>
+
+    <path id = "classpath.test">
+      <pathelement location = "lib/junit-4.10.jar" />
+      <pathelement location = "out" />
+      <pathelement location = "src" />
+      <path refid = "classpath.base" />
+   </path>
 
     <target name="clean">
         <delete dir="out"/>
     </target>
 
-    <target name="compile">
-	    <mkdir dir="out/classes"/>
-	    <javac srcdir="src" destdir="out/classes"/>
+    <target name="compile" depends = "clean">
+	    <mkdir dir="out"/>
+	    <javac srcdir="src" destdir="out">
+            <classpath refid = "classpath.test"/>
+        </javac>
     </target>
 
     <target name="jar">
         <mkdir dir="out/jar"/>
-        <jar destfile="out/jar/aMAZEing.jar" basedir="out/classes">
+        <jar destfile="out/jar/aMAZEing.jar" basedir="out">
             <manifest>
                 <attribute name="Main-Class" value="start.Main"/>
             </manifest>
@@ -21,5 +33,14 @@
     <target name="run">
         <java jar="out/jar/aMAZEing.jar" fork="true"/>
     </target>
+
+    <target name = "test" depends = "compile">
+      <junit>
+         <classpath refid = "classpath.test" />
+         <formatter type = "brief" usefile = "false" />
+         <test name = "test.FantomeTest" />
+         <test name = "test.TireTest" />
+      </junit>
+   </target>
 
 </project>

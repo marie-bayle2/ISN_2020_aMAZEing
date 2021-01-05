@@ -6,6 +6,7 @@ public class Fantome {
 	private int x;
 	private int y;
 	private boolean estActif;
+	private static int c;
 	
 	//constructeur
 	public Fantome(Labyrinthe labyrinthe) {
@@ -17,8 +18,6 @@ public class Fantome {
 		this.x = (int)(2 + Math.random()*(labyrinthe.getWidth() - 2));
 
 	}
-	
-	public static int c;
 	
 	public void bouger(Labyrinthe labyrinthe){
 
@@ -63,6 +62,10 @@ public class Fantome {
 	
 	public void setEstActif(boolean b){
 		this.estActif = b;
+	}
+
+	public void setc(int nc) {
+		this.c = nc;
 	}
 
 	//toString
