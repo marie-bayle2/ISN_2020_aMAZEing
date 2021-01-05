@@ -18,5 +18,10 @@ public class PacmanGameTest {
 
     @org.junit.Test
     public void isFinished() {
+     	//le hero tombe sur le tresor
+    	int heros=this.labyrinthe.TRESOR;
+    	assertEquals("erreur sur trouver le tresors",heros.isFinished(),True);
+    	//le hero tombe sur un monstre
+   
     }
 }
